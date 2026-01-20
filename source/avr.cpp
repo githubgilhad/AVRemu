@@ -366,9 +366,6 @@ namespace AVR
     return str ;
   }
 
-  bool Mcu::IoName(uint32_t addr, std::string &name) const
-  { return IoName(addr, name,false);}
-
   bool Mcu::IoName(uint32_t addr, std::string &name, bool use_offset) const
   {
     static std::string reserved("Reserved") ;

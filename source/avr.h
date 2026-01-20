@@ -292,8 +292,7 @@ namespace AVR
     uint8_t Skip() ;
     void Status() ;
     std::string Disasm() ;
-    bool IoName(uint32_t addr, std::string &name) const ;
-    bool IoName(uint32_t addr, std::string &name, bool offset) const ;
+    bool IoName(uint32_t addr, std::string &name, bool use_offset = false) const ;
     bool ProgAddrName(uint32_t addr, std::string &name) const ;
     Command ProgramNext() ;
 
@@ -460,7 +459,6 @@ namespace AVR
   {
   protected:
     ATmegaXX8(const std::string &name, uint32_t flashSize, uint32_t ramSize, uint32_t eepromSize) ;
-    ATmegaXX8(const std::string &name, uint32_t flashSize, uint32_t ramSize, uint32_t eepromSize, uint32_t ioSize);
     virtual ~ATmegaXX8() ;
 
     IoEeprom ioEeprom ;
