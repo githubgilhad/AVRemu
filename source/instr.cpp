@@ -9,6 +9,7 @@
 
 #pragma GCC diagnostic ignored "-Wparentheses"
 
+#define BACK_SEARCH 20
 namespace AVR
 {
   ////////////////////////////////////////////////////////////////////////////////
@@ -366,7 +367,7 @@ namespace AVR
     else if (mcu.ProgAddrName(addr+0x00800000, label))
       sprintf(buff, "%-6s r%d, %s  \t; 0x%04x %s", instr.Mnemonic().c_str(), d, label.c_str(), addr, instr.Description().c_str()) ;
     else {
-      for (int i=1; i<4 ; ++i) {
+      for (int i=1; i<BACK_SEARCH ; ++i) {
         if (mcu.ProgAddrName(addr+0x00800000-i, label)) {
           sprintf(buff, "%-6s r%d, %s+%i\t; 0x%04x %s", instr.Mnemonic().c_str(), d, label.c_str(), i, addr,  instr.Description().c_str()) ;
           found = true;
@@ -392,7 +393,7 @@ namespace AVR
     else if (mcu.ProgAddrName(addr+0x00800000, label))
       sprintf(buff, "%-6s %s, r%d  \t; 0x%04x %s", instr.Mnemonic().c_str(), label.c_str(), r, addr, instr.Description().c_str()) ;
     else {
-      for (int i=1; i<4 ; ++i) {
+      for (int i=1; i<BACK_SEARCH ; ++i) {
         if (mcu.ProgAddrName(addr+0x00800000-i, label)) {
           sprintf(buff, "%-6s %s+%i, r%d\t; 0x%04x %s", instr.Mnemonic().c_str(), label.c_str(), i, r, addr,  instr.Description().c_str()) ;
           found = true;
